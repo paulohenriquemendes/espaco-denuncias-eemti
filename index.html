@@ -40,7 +40,7 @@
   .hero::after{content:"";position:absolute;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(46,139,79,.18),transparent 70%);bottom:-160px;left:-140px;}
   .hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center;}
   .hero .brasao{display:flex;flex-direction:column;align-items:center;gap:14px;}
-  .hero .brasao svg{width:190px;height:190px;filter:drop-shadow(0 10px 26px rgba(0,0,0,.35));}
+  .hero .brasao-img{width:210px;height:auto;filter:drop-shadow(0 10px 26px rgba(0,0,0,.35));}
   .hero .brasao .nome-brasao{font-family:'Montserrat',sans-serif;font-weight:700;font-size:.92rem;letter-spacing:.14em;text-transform:uppercase;text-align:center;color:#dce9f8;}
   .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);padding:.4rem 1rem;border-radius:999px;font-size:.8rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;margin-bottom:20px;color:#cfe2f7;}
   .hero-badge .dot{width:8px;height:8px;border-radius:50%;background:#7BD39A;box-shadow:0 0 0 4px rgba(123,211,154,.25);}
@@ -110,7 +110,7 @@
   footer{background:var(--azul-profundo);color:#a9bcdc;padding:44px 0 30px;}
   .footer-inner{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;}
   .footer-brand{display:flex;align-items:center;gap:16px;}
-  .footer-brand svg{width:52px;height:52px;}
+  .footer-brand img{width:56px;height:auto;}
   .footer-brand .nome{font-family:'Montserrat',sans-serif;font-weight:700;color:#fff;font-size:.95rem;letter-spacing:.06em;text-transform:uppercase;line-height:1.4;}
   .footer-brand .sub{font-size:.78rem;color:#8ba4c6;letter-spacing:.04em;}
   .footer-selo{display:flex;align-items:center;gap:10px;background:rgba(46,139,79,.15);border:1px solid rgba(46,139,79,.4);border-radius:12px;padding:10px 16px;}
@@ -121,7 +121,7 @@
 
   @media(max-width:860px){
     .hero-inner{grid-template-columns:1fr;text-align:center;}
-    .hero .brasao svg{width:140px;height:140px;}
+    .hero .brasao-img{width:150px;height:auto;}
     .hero p.lead{margin-left:auto;margin-right:auto;}
     .hero-ctas,.hero-flags{justify-content:center;}
     .footer-inner{justify-content:center;text-align:center;}
@@ -165,29 +165,8 @@
       </div>
     </div>
     <div class="brasao">
-      <!-- Emblema institucional (escudo + capelo) -->
-      <svg viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg" aria-label="Brasão da EEMTI Dalva Queiroz de Carvalho">
-        <defs>
-          <linearGradient id="shieldG" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#2B5AA6"/><stop offset="1" stop-color="#15305F"/>
-          </linearGradient>
-        </defs>
-        <path d="M100 12 L172 34 V112 C172 158 142 190 100 208 C58 190 28 158 28 112 V34 Z" fill="url(#shieldG)" stroke="#D0E3F3" stroke-width="5"/>
-        <path d="M100 26 L158 43 V110 C158 148 134 174 100 190 C66 174 42 148 42 110 V43 Z" fill="none" stroke="#8FD6AB" stroke-width="2.2" opacity=".85"/>
-        <!-- capelo -->
-        <g>
-          <path d="M100 52 L152 74 L100 96 L48 74 Z" fill="#D0E3F3"/>
-          <path d="M68 84 V104 C68 112 84 118 100 118 C116 118 132 112 132 104 V84 L100 98 Z" fill="#A9C8E8"/>
-          <path d="M152 74 V98" stroke="#D0E3F3" stroke-width="3.4" stroke-linecap="round"/>
-          <circle cx="152" cy="102" r="4.6" fill="#8FD6AB"/>
-        </g>
-        <!-- faixa -->
-        <path d="M40 138 H160 L152 158 H48 Z" fill="#D0E3F3"/>
-        <text x="100" y="153" text-anchor="middle" font-family="Montserrat,Arial,sans-serif" font-weight="800" font-size="13.5" fill="#1D3D7D" letter-spacing="2.2">DQC</text>
-        <!-- livro /.pages -->
-        <path d="M62 168 C74 160 88 160 100 166 C112 160 126 160 138 168 V176 C126 168 112 168 100 174 C88 168 74 168 62 176 Z" fill="#8FD6AB" opacity=".9"/>
-      </svg>
-      <span class="nome-brasao">EEMTI Dalva<br>Queiroz de Carvalho</span>
+      <img src="assets/brasao-eemti.png" alt="Brasão da EEMTI Dalva Queiroz de Carvalho" class="brasao-img">
+            <span class="nome-brasao">EEMTI Dalva<br>Queiroz de Carvalho</span>
     </div>
   </div>
 </header>
@@ -317,7 +296,7 @@
 <footer>
   <div class="container footer-inner">
     <div class="footer-brand">
-      <svg viewBox="0 0 200 220"><path d="M100 12 L172 34 V112 C172 158 142 190 100 208 C58 190 28 158 28 112 V34 Z" fill="#2B5AA6" stroke="#D0E3F3" stroke-width="5"/><path d="M100 52 L152 74 L100 96 L48 74 Z" fill="#D0E3F3"/><path d="M68 84 V104 C68 112 84 118 100 118 C116 118 132 112 132 104 V84 L100 98 Z" fill="#A9C8E8"/></svg>
+      <img src="assets/brasao-eemti.png" alt="Brasão da EEMTI Dalva Queiroz de Carvalho">
       <div>
         <div class="nome">EEMTI Dalva Queiroz de Carvalho</div>
         <div class="sub">Governo do Estado do Ceará · Seduc</div>
