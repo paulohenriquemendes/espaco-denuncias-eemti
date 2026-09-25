@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Espaço de Denúncias — EEMTI Dalva Queiroz de Carvalho</title>
+<meta name="description" content="Canal seguro, gratuito e sigiloso para denúncias de racismo e bullying na EEMTI Dalva Queiroz de Carvalho. Denuncie, inclusive de forma anônima.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --azul-royal:#1D3D7D;
+    --azul-profundo:#15305F;
+    --azul-claro:#D0E3F3;
+    --azul-claro-2:#E8F1FA;
+    --verde-selo:#2E8B4F;
+    --verde-selo-claro:#E7F5EC;
+    --branco:#FFFFFF;
+    --cinza-texto:#4A5568;
+    --cinza-suave:#F5F7FA;
+    --vermelho-suave:#B3261E;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Inter',sans-serif;color:var(--cinza-texto);background:var(--branco);line-height:1.6;}
+  h1,h2,h3,h4{font-family:'Montserrat',sans-serif;color:var(--azul-royal);line-height:1.25;}
+  .container{max-width:1100px;margin:0 auto;padding:0 24px;}
+
+  /* ===== TOPO / SELO ===== */
+  .topbar{background:var(--azul-profundo);color:#c9d8ec;font-size:.8rem;padding:.55rem 0;}
+  .topbar .container{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;}
+  .topbar strong{color:#fff;}
+  .selo-pill{display:inline-flex;align-items:center;gap:7px;background:rgba(46,139,79,.18);border:1px solid rgba(46,139,79,.5);color:#a8e0bd;padding:.3rem .8rem;border-radius:999px;font-size:.78rem;font-weight:600;letter-spacing:.02em;}
+  .selo-pill svg{width:14px;height:14px;flex:none;}
+
+  /* ===== HERO ===== */
+  .hero{background:linear-gradient(135deg,var(--azul-royal) 0%,var(--azul-profundo) 70%);position:relative;overflow:hidden;padding:64px 0 88px;color:#fff;}
+  .hero::before{content:"";position:absolute;width:560px;height:560px;border-radius:50%;background:radial-gradient(circle,rgba(208,227,243,.16),transparent 70%);top:-180px;right:-120px;}
+  .hero::after{content:"";position:absolute;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(46,139,79,.18),transparent 70%);bottom:-160px;left:-140px;}
+  .hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center;}
+  .hero .brasao{display:flex;flex-direction:column;align-items:center;gap:14px;}
+  .hero .brasao svg{width:190px;height:190px;filter:drop-shadow(0 10px 26px rgba(0,0,0,.35));}
+  .hero .brasao .nome-brasao{font-family:'Montserrat',sans-serif;font-weight:700;font-size:.92rem;letter-spacing:.14em;text-transform:uppercase;text-align:center;color:#dce9f8;}
+  .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);padding:.4rem 1rem;border-radius:999px;font-size:.8rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;margin-bottom:20px;color:#cfe2f7;}
+  .hero-badge .dot{width:8px;height:8px;border-radius:50%;background:#7BD39A;box-shadow:0 0 0 4px rgba(123,211,154,.25);}
+  .hero h1{color:#fff;font-size:clamp(1.9rem,4.2vw,3rem);font-weight:800;margin-bottom:16px;}
+  .hero h1 em{font-style:normal;color:#8FD6AB;}
+  .hero p.lead{font-size:1.08rem;color:#d7e4f4;max-width:560px;margin-bottom:30px;}
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;}
+  .btn{display:inline-flex;align-items:center;gap:10px;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.95rem;padding:15px 28px;border-radius:12px;text-decoration:none;transition:transform .18s ease,box-shadow .18s ease;}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(0,0,0,.22);}
+  .btn-primary{background:#fff;color:var(--azul-royal);box-shadow:0 8px 22px rgba(0,0,0,.2);}
+  .btn-outline{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.55);}
+  .hero-flags{display:flex;gap:22px;margin-top:26px;flex-wrap:wrap;}
+  .hero-flags span{display:inline-flex;align-items:center;gap:8px;font-size:.86rem;color:#c8d9ee;}
+  .hero-flags svg{width:17px;height:17px;color:#8FD6AB;}
+
+  /* ===== CARDS DE DENÚNCIA ===== */
+  .cards{position:relative;margin-top:-52px;z-index:2;}
+  .cards-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:26px;}
+  .card{background:#fff;border-radius:18px;padding:36px 30px;box-shadow:0 18px 50px rgba(21,48,95,.14);border-top:6px solid var(--azul-royal);display:flex;flex-direction:column;gap:14px;}
+  .card.bullying{border-top-color:var(--verde-selo);}
+  .card-icon{width:62px;height:62px;border-radius:16px;display:flex;align-items:center;justify-content:center;background:var(--azul-claro-2);}
+  .card.bullying .card-icon{background:var(--verde-selo-claro);}
+  .card-icon svg{width:32px;height:32px;}
+  .card h3{font-size:1.35rem;font-weight:800;}
+  .card p{font-size:.95rem;flex-grow:1;}
+  .card ul{list-style:none;display:flex;flex-direction:column;gap:7px;margin:2px 0 6px;}
+  .card li{font-size:.88rem;display:flex;gap:8px;align-items:flex-start;color:#5b6b7f;}
+  .card li::before{content:"✓";color:var(--verde-selo);font-weight:700;}
+  .btn-card{justify-content:center;}
+  .btn-racismo{background:var(--azul-royal);color:#fff;box-shadow:0 8px 20px rgba(29,61,125,.35);}
+  .btn-bullying{background:var(--verde-selo);color:#fff;box-shadow:0 8px 20px rgba(46,139,79,.35);}
+
+  /* ===== SEÇÕES ===== */
+  section{padding:72px 0;}
+  .section-head{text-align:center;max-width:640px;margin:0 auto 44px;}
+  .section-head .kicker{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--verde-selo);margin-bottom:10px;}
+  .section-head h2{font-size:clamp(1.5rem,3vw,2.1rem);font-weight:800;margin-bottom:12px;}
+  .section-head p{color:#66788e;}
+
+  .steps{background:var(--cinza-suave);}
+  .steps-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;}
+  .step{background:#fff;border-radius:16px;padding:30px 26px;box-shadow:0 8px 26px rgba(21,48,95,.08);position:relative;}
+  .step-num{width:44px;height:44px;border-radius:12px;background:var(--azul-royal);color:#fff;font-family:'Montserrat',sans-serif;font-weight:800;font-size:1.15rem;display:flex;align-items:center;justify-content:center;margin-bottom:16px;}
+  .step:nth-child(2) .step-num{background:#2B5AA6;}
+  .step:nth-child(3) .step-num{background:var(--verde-selo);}
+  .step h4{font-size:1.05rem;margin-bottom:8px;}
+  .step p{font-size:.92rem;}
+
+  .garantias{background:var(--azul-royal);}
+  .garantias .section-head h2{color:#fff;}
+  .garantias .section-head p{color:#c8d9ee;}
+  .garantias .section-head .kicker{color:#8FD6AB;}
+  .gar-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:22px;}
+  .gar{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:16px;padding:26px;color:#dce8f6;}
+  .gar svg{width:30px;height:30px;color:#8FD6AB;margin-bottom:12px;}
+  .gar h4{color:#fff;font-size:1rem;margin-bottom:6px;}
+  .gar p{font-size:.9rem;}
+
+  .apoio{background:var(--cinza-suave);}
+  .apoio-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;max-width:900px;margin:0 auto;}
+  .apoio-item{background:#fff;border-radius:14px;padding:24px;text-align:center;box-shadow:0 6px 20px rgba(21,48,95,.07);}
+  .apoio-item .num{font-family:'Montserrat',sans-serif;font-size:1.7rem;font-weight:800;color:var(--azul-royal);}
+  .apoio-item h4{font-size:.95rem;margin:6px 0 4px;}
+  .apoio-item p{font-size:.85rem;}
+
+  /* ===== FOOTER ===== */
+  footer{background:var(--azul-profundo);color:#a9bcdc;padding:44px 0 30px;}
+  .footer-inner{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;}
+  .footer-brand{display:flex;align-items:center;gap:16px;}
+  .footer-brand svg{width:52px;height:52px;}
+  .footer-brand .nome{font-family:'Montserrat',sans-serif;font-weight:700;color:#fff;font-size:.95rem;letter-spacing:.06em;text-transform:uppercase;line-height:1.4;}
+  .footer-brand .sub{font-size:.78rem;color:#8ba4c6;letter-spacing:.04em;}
+  .footer-selo{display:flex;align-items:center;gap:10px;background:rgba(46,139,79,.15);border:1px solid rgba(46,139,79,.4);border-radius:12px;padding:10px 16px;}
+  .footer-selo svg{width:26px;height:26px;color:#8FD6AB;}
+  .footer-selo .t1{font-size:.8rem;font-weight:700;color:#cfeadb;letter-spacing:.06em;text-transform:uppercase;}
+  .footer-selo .t2{font-size:.72rem;color:#9dc3af;}
+  .footer-note{text-align:center;font-size:.78rem;color:#7d97ba;margin-top:28px;border-top:1px solid rgba(255,255,255,.1);padding-top:20px;}
+
+  @media(max-width:860px){
+    .hero-inner{grid-template-columns:1fr;text-align:center;}
+    .hero .brasao svg{width:140px;height:140px;}
+    .hero p.lead{margin-left:auto;margin-right:auto;}
+    .hero-ctas,.hero-flags{justify-content:center;}
+    .footer-inner{justify-content:center;text-align:center;}
+  }
+</style>
+</head>
+<body>
+
+<!-- TOPO -->
+<div class="topbar">
+  <div class="container">
+    <span><strong>Governo do Estado do Ceará</strong> · Secretaria da Educação (Seduc)</span>
+    <span class="selo-pill">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22c5.5 0 10-4.5 10-10-5.5 0-10 4.5-10 10z"/><path d="M12 22c-5.5 0-10-4.5-10-10 5.5 0 10 4.5 10 10z" opacity=".6"/><path d="M12 22V8"/><path d="M12 8c3 0 5-2 5-4-3 0-5 1.5-5 4z"/></svg>
+      Selo Sustentável — Seduc/CE
+    </span>
+  </div>
+</div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="container hero-inner">
+    <div>
+      <span class="hero-badge"><span class="dot"></span> Canal de denúncias · Aberto a estudantes, famílias e servidores</span>
+      <h1>Silêncio também machuca.<br><em>Denuncie.</em></h1>
+      <p class="lead">Este é o canal oficial de denúncias da <strong>EEMTI Dalva Queiroz de Carvalho</strong>. É seguro, gratuito e sigiloso — e você pode denunciar de forma <strong>totalmente anônima</strong>.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSeIWJcpQjpZmB7pggJbDv9XRCqDuoxP-m0_NsIWLdpL04LBvA/viewform" target="_blank" rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 2c-5 0-9 4-9 9 0 3 1.5 5.5 4 7v4h3v-2h2v2h2v-2h3v-4c2.5-1.5 4-4 4-7 0-5-4-9-9-9z"/><circle cx="9" cy="11" r="1.4" fill="currentColor"/><circle cx="15" cy="11" r="1.4" fill="currentColor"/></svg>
+          Denunciar Racismo
+        </a>
+        <a class="btn btn-outline" href="https://docs.google.com/forms/d/e/1FAIpQLSeCHXJImqyAoVvvWNtaL1qZO-GqzXhaqVeR5K97FmmxAz22tg/viewform" target="_blank" rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Denunciar Bullying
+        </a>
+      </div>
+      <div class="hero-flags">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> 100% sigiloso</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Denúncia anônima</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Apuração responsável</span>
+      </div>
+    </div>
+    <div class="brasao">
+      <!-- Emblema institucional (escudo + capelo) -->
+      <svg viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg" aria-label="Brasão da EEMTI Dalva Queiroz de Carvalho">
+        <defs>
+          <linearGradient id="shieldG" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#2B5AA6"/><stop offset="1" stop-color="#15305F"/>
+          </linearGradient>
+        </defs>
+        <path d="M100 12 L172 34 V112 C172 158 142 190 100 208 C58 190 28 158 28 112 V34 Z" fill="url(#shieldG)" stroke="#D0E3F3" stroke-width="5"/>
+        <path d="M100 26 L158 43 V110 C158 148 134 174 100 190 C66 174 42 148 42 110 V43 Z" fill="none" stroke="#8FD6AB" stroke-width="2.2" opacity=".85"/>
+        <!-- capelo -->
+        <g>
+          <path d="M100 52 L152 74 L100 96 L48 74 Z" fill="#D0E3F3"/>
+          <path d="M68 84 V104 C68 112 84 118 100 118 C116 118 132 112 132 104 V84 L100 98 Z" fill="#A9C8E8"/>
+          <path d="M152 74 V98" stroke="#D0E3F3" stroke-width="3.4" stroke-linecap="round"/>
+          <circle cx="152" cy="102" r="4.6" fill="#8FD6AB"/>
+        </g>
+        <!-- faixa -->
+        <path d="M40 138 H160 L152 158 H48 Z" fill="#D0E3F3"/>
+        <text x="100" y="153" text-anchor="middle" font-family="Montserrat,Arial,sans-serif" font-weight="800" font-size="13.5" fill="#1D3D7D" letter-spacing="2.2">DQC</text>
+        <!-- livro /.pages -->
+        <path d="M62 168 C74 160 88 160 100 166 C112 160 126 160 138 168 V176 C126 168 112 168 100 174 C88 168 74 168 62 176 Z" fill="#8FD6AB" opacity=".9"/>
+      </svg>
+      <span class="nome-brasao">EEMTI Dalva<br>Queiroz de Carvalho</span>
+    </div>
+  </div>
+</header>
+
+<!-- CARDS -->
+<div class="cards">
+  <div class="container cards-grid">
+    <article class="card">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#1D3D7D" stroke-width="2"><path d="M12 2c-5 0-9 4-9 9 0 3 1.5 5.5 4 7v4h3v-2h2v2h2v-2h3v-4c2.5-1.5 4-4 4-7 0-5-4-9-9-9z"/><circle cx="9" cy="11" r="1.4" fill="#1D3D7D"/><circle cx="15" cy="11" r="1.4" fill="#1D3D7D"/></svg>
+      </div>
+      <h3>Denúncia de Racismo</h3>
+      <p>Você sofreu ou presenciou uma situação de racismo — piadas, ofensas, exclusão ou discriminação racial? Denuncie. Toda denúncia é apurada com responsabilidade e sigilo.</p>
+      <ul>
+        <li>Anônima, se você preferir</li>
+        <li>Perguntas simples, em poucos minutos</li>
+        <li>Espaço para provas e testemunhas</li>
+      </ul>
+      <a class="btn btn-racismo btn-card" href="https://docs.google.com/forms/d/e/1FAIpQLSeIWJcpQjpZmB7pggJbDv9XRCqDuoxP-m0_NsIWLdpL04LBvA/viewform" target="_blank" rel="noopener">Preencher denúncia →</a>
+    </article>
+    <article class="card bullying">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#2E8B4F" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+      </div>
+      <h3>Denúncia de Bullying</h3>
+      <p>Apelidos humilhantes, ameaças, agressões, exclusão ou cyberbullying? Denuncie — por você ou por alguém que você viu sofrer. Juntos, mantemos a nossa escola um espaço seguro.</p>
+      <ul>
+        <li>Anônima, se você preferir</li>
+        <li>Classifique: verbal, físico, social, cyber…</li>
+        <li>Espaço para provas e testemunhas</li>
+      </ul>
+      <a class="btn btn-bullying btn-card" href="https://docs.google.com/forms/d/e/1FAIpQLSeCHXJImqyAoVvvWNtaL1qZO-GqzXhaqVeR5K97FmmxAz22tg/viewform" target="_blank" rel="noopener">Preencher denúncia →</a>
+    </article>
+  </div>
+</div>
+
+<!-- COMO FUNCIONA -->
+<section class="steps" id="como-funciona">
+  <div class="container">
+    <div class="section-head">
+      <span class="kicker">Como funciona</span>
+      <h2>Denunciar é simples</h2>
+      <p>Leva menos de 5 minutos e você não precisa se identificar em nenhum momento.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h4>Escolha o tema</h4>
+        <p>Clique em "Denunciar Racismo" ou "Denunciar Bullying", de acordo com a situação que você quer relatar.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h4>Preencha o formulário</h4>
+        <p>Conte o que aconteceu, quando, onde e com quem. Os campos de identificação são opcionais — você decide.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h4>Sua denúncia é apurada</h4>
+        <p>A denúncia chega diretamente à equipe responsável da escola, com total sigilo, para apuração e medidas de proteção.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GARANTIAS -->
+<section class="garantias">
+  <div class="container">
+    <div class="section-head">
+      <span class="kicker">Nossos compromissos</span>
+      <h2>Sua segurança vem primeiro</h2>
+      <p>A EEMTI Dalva Queiroz de Carvalho trata toda denúncia com seriedade, respeito e cuidado.</p>
+    </div>
+    <div class="gar-grid">
+      <div class="gar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/><circle cx="12" cy="15" r="1.6" fill="currentColor"/></svg>
+        <h4>Sigilo total</h4>
+        <p>As informações são tratadas com estrita confidencialidade e acessadas apenas pela equipe responsável.</p>
+      </div>
+      <div class="gar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg>
+        <h4>Anonimato garantido</h4>
+        <p>Se preferir, deixe os campos de identificação em branco. A denúncia será apurada do mesmo jeito.</p>
+      </div>
+      <div class="gar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/><path d="M3 21h18"/></svg>
+        <h4>Retorno, se você quiser</h4>
+        <p>Deixar um contato é opcional. Se deixar, a equipe pode informar você sobre a apuração.</p>
+      </div>
+      <div class="gar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+        <h4>Rápido e gratuito</h4>
+        <p>O canal funciona 24 horas por dia, direto do celular ou do computador, sem custo nenhum.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APOIO -->
+<section class="apoio">
+  <div class="container">
+    <div class="section-head">
+      <span class="kicker">Apoio imediato</span>
+      <h2>Precisa de ajuda agora?</h2>
+      <p>Se alguém está em risco imediato, além da denúncia, procure estes canais gratuitos:</p>
+    </div>
+    <div class="apoio-grid">
+      <div class="apoio-item">
+        <div class="num">188</div>
+        <h4>CVV — Centro de Valorização da Vida</h4>
+        <p>Apoio emocional e prevenção do suicídio, 24 horas por dia.</p>
+      </div>
+      <div class="apoio-item">
+        <div class="num">100</div>
+        <h4>Disque Direitos Humanos</h4>
+        <p>Denúncias de violação de direitos, inclusive contra crianças e adolescentes.</p>
+      </div>
+      <div class="apoio-item">
+        <div class="num">190</div>
+        <h4>Polícia Militar</h4>
+        <p>Emergências e situações de risco imediato.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <svg viewBox="0 0 200 220"><path d="M100 12 L172 34 V112 C172 158 142 190 100 208 C58 190 28 158 28 112 V34 Z" fill="#2B5AA6" stroke="#D0E3F3" stroke-width="5"/><path d="M100 52 L152 74 L100 96 L48 74 Z" fill="#D0E3F3"/><path d="M68 84 V104 C68 112 84 118 100 118 C116 118 132 112 132 104 V84 L100 98 Z" fill="#A9C8E8"/></svg>
+      <div>
+        <div class="nome">EEMTI Dalva Queiroz de Carvalho</div>
+        <div class="sub">Governo do Estado do Ceará · Seduc</div>
+      </div>
+    </div>
+    <div class="footer-selo">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22c5.5 0 10-4.5 10-10-5.5 0-10 4.5-10 10z"/><path d="M12 22c-5.5 0-10-4.5-10-10 5.5 0 10 4.5 10 10z" opacity=".6"/><path d="M12 22V8"/><path d="M12 8c3 0 5-2 5-4-3 0-5 1.5-5 4z"/></svg>
+      <div>
+        <div class="t1">Selo Sustentável</div>
+        <div class="t2">Programa da Seduc/CE</div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-note container">Espaço de Denúncias · Canal sigiloso de combate ao racismo e ao bullying · Cada denúncia é encaminhada por e-mail à equipe responsável da escola.</div>
+</footer>
+
+</body>
+</html>
