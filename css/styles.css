@@ -32,7 +32,7 @@ a:focus-visible,button:focus-visible{outline:3px solid #8FD6AB;outline-offset:3p
 .topbar .container{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;}
 .topbar strong{color:#fff;}
 .selo-pill{display:inline-flex;align-items:center;gap:7px;background:rgba(46,139,79,.18);border:1px solid rgba(46,139,79,.5);color:#a8e0bd;padding:.3rem .8rem;border-radius:999px;font-size:.78rem;font-weight:600;letter-spacing:.02em;}
-.selo-pill svg{width:14px;height:14px;flex:none;}
+.selo-pill svg,.selo-pill img{width:16px;height:16px;flex:none;border-radius:50%;}
 
 /* ===== HERO ===== */
 .hero{background:linear-gradient(135deg,var(--azul-royal) 0%,var(--azul-profundo) 70%);position:relative;overflow:hidden;padding:64px 0 88px;color:#fff;}
@@ -42,6 +42,7 @@ a:focus-visible,button:focus-visible{outline:3px solid #8FD6AB;outline-offset:3p
 .hero .brasao{display:flex;flex-direction:column;align-items:center;gap:14px;}
 .hero .brasao-img{width:210px;height:auto;filter:drop-shadow(0 10px 26px rgba(0,0,0,.35));}
 .hero .brasao .nome-brasao{font-family:'Montserrat',sans-serif;font-weight:700;font-size:.92rem;letter-spacing:.14em;text-transform:uppercase;text-align:center;color:#dce9f8;}
+.hero .selo-hero-img{width:60px;height:60px;margin-top:4px;filter:drop-shadow(0 6px 14px rgba(0,0,0,.3));background:#fff;border-radius:50%;padding:4px;}
 .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);padding:.4rem 1rem;border-radius:999px;font-size:.8rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;margin-bottom:20px;color:#cfe2f7;}
 .hero-badge .dot{width:8px;height:8px;border-radius:50%;background:#7BD39A;box-shadow:0 0 0 4px rgba(123,211,154,.25);animation:pulse 2.4s infinite;}
 @keyframes pulse{0%,100%{box-shadow:0 0 0 4px rgba(123,211,154,.25);}50%{box-shadow:0 0 0 8px rgba(123,211,154,.1);}}
@@ -133,7 +134,7 @@ footer{background:var(--azul-profundo);color:#a9bcdc;padding:44px 0 30px;}
 .footer-brand .nome{font-family:'Montserrat',sans-serif;font-weight:700;color:#fff;font-size:.95rem;letter-spacing:.06em;text-transform:uppercase;line-height:1.4;}
 .footer-brand .sub{font-size:.78rem;color:#8ba4c6;letter-spacing:.04em;}
 .footer-selo{display:flex;align-items:center;gap:10px;background:rgba(46,139,79,.15);border:1px solid rgba(46,139,79,.4);border-radius:12px;padding:10px 16px;}
-.footer-selo svg{width:26px;height:26px;color:#8FD6AB;}
+.footer-selo svg,.footer-selo img{width:34px;height:34px;color:#8FD6AB;flex:none;}
 .footer-selo .t1{font-size:.8rem;font-weight:700;color:#cfeadb;letter-spacing:.06em;text-transform:uppercase;}
 .footer-selo .t2{font-size:.72rem;color:#9dc3af;}
 .footer-note{text-align:center;font-size:.78rem;color:#7d97ba;margin-top:28px;border-top:1px solid rgba(255,255,255,.1);padding-top:20px;}
